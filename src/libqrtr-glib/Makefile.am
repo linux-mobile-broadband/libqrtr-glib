@@ -67,7 +67,7 @@ Qrtr-1.0.gir: libqrtr-glib.la
 Qrtr_1_0_gir_INCLUDES = GLib-2.0 GObject-2.0 Gio-2.0
 Qrtr_1_0_gir_CFLAGS = $(libqrtr_glib_la_CPPFLAGS)
 Qrtr_1_0_gir_LIBS = libqrtr-glib.la
-Qrtr_1_0_gir_EXPORT_PACKAGES = libqrtr-glib
+Qrtr_1_0_gir_EXPORT_PACKAGES = qrtr-glib
 Qrtr_1_0_gir_SCANNERFLAGS = \
 	$(WARN_SCANNERFLAGS) \
 	--c-include "libqrtr-glib.h" \
