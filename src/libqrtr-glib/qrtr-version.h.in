@@ -34,7 +34,7 @@
  * Evaluates to the major version number of libqrtr-glib which this source
  * is compiled against.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_MAJOR_VERSION (@QRTR_MAJOR_VERSION@)
 
@@ -44,7 +44,7 @@
  * Evaluates to the minor version number of libqrtr-glib which this source
  * is compiled against.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_MINOR_VERSION (@QRTR_MINOR_VERSION@)
 
@@ -54,7 +54,7 @@
  * Evaluates to the micro version number of libqrtr-glib which this source
  * compiled against.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_MICRO_VERSION (@QRTR_MICRO_VERSION@)
 
@@ -69,7 +69,7 @@
  * Returns: %TRUE if the version of the libqrtr-glib header files
  * is the same as or newer than the passed-in version.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_CHECK_VERSION(major,minor,micro)                         \
     (QRTR_MAJOR_VERSION > (major) ||                                  \

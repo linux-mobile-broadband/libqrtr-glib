@@ -664,7 +664,7 @@ qrtr_bus_class_init (QrtrBusClass *klass)
     /**
      * QrtrBus:lookup-timeout:
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     properties[PROP_LOOKUP_TIMEOUT] =
         g_param_spec_uint (QRTR_BUS_LOOKUP_TIMEOUT,
@@ -684,7 +684,7 @@ qrtr_bus_class_init (QrtrBusClass *klass)
      * The ::node-added signal is emitted when a new node registers a service on
      * the QRTR bus.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_NODE_ADDED] =
         g_signal_new (QRTR_BUS_SIGNAL_NODE_ADDED,
@@ -706,7 +706,7 @@ qrtr_bus_class_init (QrtrBusClass *klass)
      * The ::node-removed signal is emitted when a node deregisters all services
      * from the QRTR bus.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_NODE_REMOVED] =
         g_signal_new (QRTR_BUS_SIGNAL_NODE_REMOVED,

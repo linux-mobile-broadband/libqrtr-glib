@@ -74,7 +74,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrBus, g_object_unref)
  *
  * Symbol defining the #QrtrBus:lookup-timeout property.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_BUS_LOOKUP_TIMEOUT "lookup-timeout"
 
@@ -83,7 +83,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrBus, g_object_unref)
  *
  * Symbol defining the #QrtrBus::node-added signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_BUS_SIGNAL_NODE_ADDED "node-added"
 
@@ -92,7 +92,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrBus, g_object_unref)
  *
  * Symbol defining the #QrtrBus::node-removed signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_BUS_SIGNAL_NODE_REMOVED "node-removed"
 
@@ -117,7 +117,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrBus, g_object_unref)
  * When the operation is finished, @callback will be invoked. You can then call
  * qrtr_bus_new_finish() to get the result of the operation.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 void qrtr_bus_new (guint                lookup_timeout_ms,
                    GCancellable        *cancellable,
@@ -133,7 +133,7 @@ void qrtr_bus_new (guint                lookup_timeout_ms,
  *
  * Returns: (transfer full): A newly created #QrtrBus, or %NULL if @error is set.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrBus *qrtr_bus_new_finish (GAsyncResult  *res,
                               GError       **error);
@@ -151,7 +151,7 @@ QrtrBus *qrtr_bus_new_finish (GAsyncResult  *res,
  * Returns: (transfer none): a #QrtrNode, or %NULL if none available.
  *  Do not free the returned object, it is owned by @self.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrNode *qrtr_bus_peek_node (QrtrBus *self,
                               guint32  node_id);
@@ -168,7 +168,7 @@ QrtrNode *qrtr_bus_peek_node (QrtrBus *self,
  * Returns: (transfer full): a #QrtrNode that must be freed with g_object_unref(),
  *  or %NULL if none available
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrNode *qrtr_bus_get_node (QrtrBus *self,
                              guint32  node_id);
@@ -184,7 +184,7 @@ QrtrNode *qrtr_bus_get_node (QrtrBus *self,
  *  #QrtrNode elements. The caller should not free the result, it is
  *  owned by @self.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 GList *qrtr_bus_peek_nodes (QrtrBus *self);
 
@@ -198,7 +198,7 @@ GList *qrtr_bus_peek_nodes (QrtrBus *self);
  *  #QrtrNode elements. The caller should free the result by using
  *  g_list_free_full() with g_object_unref() as #GDestroyNotify.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 GList *qrtr_bus_get_nodes (QrtrBus *self);
 
@@ -218,7 +218,7 @@ GList *qrtr_bus_get_nodes (QrtrBus *self);
  * qrtr_bus_wait_for_node_finish() to get the result of the
  * operation.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 void qrtr_bus_wait_for_node (QrtrBus             *self,
                              guint32              node_id,
@@ -237,7 +237,7 @@ void qrtr_bus_wait_for_node (QrtrBus             *self,
  *
  * Returns: (transfer full): A #QrtrNode, or %NULL if @error is set.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrNode *qrtr_bus_wait_for_node_finish (QrtrBus       *self,
                                          GAsyncResult  *res,

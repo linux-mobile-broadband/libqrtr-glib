@@ -339,7 +339,7 @@ qrtr_client_class_init (QrtrClientClass *klass)
     /**
      * QrtrClient:client-node:
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     properties[PROP_NODE] =
         g_param_spec_object (QRTR_CLIENT_NODE,
@@ -352,7 +352,7 @@ qrtr_client_class_init (QrtrClientClass *klass)
     /**
      * QrtrClient:client-port:
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     properties[PROP_PORT] =
         g_param_spec_uint (QRTR_CLIENT_PORT,
@@ -377,7 +377,7 @@ qrtr_client_class_init (QrtrClientClass *klass)
      * modified by multiple users. In other words, the user connected to this
      * signal may modify the contents of the @message byte array if needed.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_MESSAGE] =
         g_signal_new (QRTR_CLIENT_SIGNAL_MESSAGE,

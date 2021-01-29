@@ -58,7 +58,7 @@ typedef struct _QrtrClientPrivate QrtrClientPrivate;
  *
  * The QRTR node this client refers to.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_CLIENT_NODE "client-node"
 
@@ -67,7 +67,7 @@ typedef struct _QrtrClientPrivate QrtrClientPrivate;
  *
  * The QRTR node port this client refers to.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_CLIENT_PORT "client-port"
 
@@ -76,7 +76,7 @@ typedef struct _QrtrClientPrivate QrtrClientPrivate;
  *
  * Symbol defining the #QrtrClient::client-message signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_CLIENT_SIGNAL_MESSAGE "client-message"
 
@@ -104,7 +104,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrClient, g_object_unref)
  *
  * Returns: (transfer full): a newly allocated #QrtrClient, or %NULL if @error is set.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrClient *qrtr_client_new (QrtrNode      *node,
                              guint32        port,
@@ -121,7 +121,7 @@ QrtrClient *qrtr_client_new (QrtrNode      *node,
  * Returns: (transfer none): a #QrtrNode. Do not free the returned object, it is
  *  owned by @self.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrNode *qrtr_client_peek_node (QrtrClient *self);
 
@@ -133,7 +133,7 @@ QrtrNode *qrtr_client_peek_node (QrtrClient *self);
  *
  * Returns: (transfer full): a #QrtrNode that must be freed with g_object_unref().
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrNode *qrtr_client_get_node (QrtrClient *self);
 
@@ -145,7 +145,7 @@ QrtrNode *qrtr_client_get_node (QrtrClient *self);
  *
  * Returns: the node port.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_client_get_port (QrtrClient *self);
 
@@ -161,7 +161,7 @@ guint32 qrtr_client_get_port (QrtrClient *self);
  *
  * Returns: %TRUE if the message is sent, or %FALSE if @error is set.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gboolean qrtr_client_send (QrtrClient    *self,
                            GByteArray    *message,

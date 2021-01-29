@@ -568,7 +568,7 @@ qrtr_node_class_init (QrtrNodeClass *klass)
     /**
      * QrtrNode:bus:
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     properties[PROP_BUS] =
         g_param_spec_object (QRTR_NODE_BUS,
@@ -581,7 +581,7 @@ qrtr_node_class_init (QrtrNodeClass *klass)
     /**
      * QrtrNode:node-id:
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     properties[PROP_NODE_ID] =
         g_param_spec_uint (QRTR_NODE_ID,
@@ -601,7 +601,7 @@ qrtr_node_class_init (QrtrNodeClass *klass)
      * The ::service-added signal is emitted when a new service registers
      * on the QRTR node.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_SERVICE_ADDED] =
         g_signal_new (QRTR_NODE_SIGNAL_SERVICE_ADDED,
@@ -623,7 +623,7 @@ qrtr_node_class_init (QrtrNodeClass *klass)
      * The ::service-removed signal is emitted when a service deregisters
      * from the QRTR node.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_SERVICE_REMOVED] =
         g_signal_new (QRTR_NODE_SIGNAL_SERVICE_REMOVED,
@@ -644,7 +644,7 @@ qrtr_node_class_init (QrtrNodeClass *klass)
      * The ::node-removed signal is emitted when the node fully disappears from
      * the QRTR bus.
      *
-     * Since: 1.28
+     * Since: 1.0
      */
     signals[SIGNAL_REMOVED] =
         g_signal_new (QRTR_NODE_SIGNAL_REMOVED,

@@ -57,7 +57,7 @@ typedef struct _QrtrNodePrivate QrtrNodePrivate;
  *
  * The QRTR bus.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_NODE_BUS "bus"
 
@@ -66,7 +66,7 @@ typedef struct _QrtrNodePrivate QrtrNodePrivate;
  *
  * The node id.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_NODE_ID "node-id"
 
@@ -87,7 +87,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNode, g_object_unref)
  *
  * Symbol defining the #QrtrNode::service-added signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_NODE_SIGNAL_SERVICE_ADDED "service-added"
 
@@ -96,7 +96,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNode, g_object_unref)
  *
  * Symbol defining the #QrtrNode::service-removed signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_NODE_SIGNAL_SERVICE_REMOVED "service-removed"
 
@@ -105,7 +105,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNode, g_object_unref)
  *
  * Symbol defining the #QrtrNode::node-removed signal.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 #define QRTR_NODE_SIGNAL_REMOVED "node-removed"
 
@@ -117,7 +117,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNode, g_object_unref)
  *
  * Returns: the node id.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_node_get_id (QrtrNode *self);
 
@@ -135,7 +135,7 @@ struct _QrtrBus;
  * Returns: (transfer none): a #QrtrBus. Do not free the returned object, it is
  *  owned by @self.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrBus *qrtr_node_peek_bus (QrtrNode *self);
 
@@ -147,7 +147,7 @@ QrtrBus *qrtr_node_peek_bus (QrtrNode *self);
  *
  * Returns: (transfer full): a #QrtrBus that must be freed with g_object_unref().
  *
- * Since: 1.28
+ * Since: 1.0
  */
 QrtrBus *qrtr_node_get_bus (QrtrNode *self);
 
@@ -156,7 +156,7 @@ QrtrBus *qrtr_node_get_bus (QrtrNode *self);
  *
  * Information for a service instance in the #QrtrNode.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 typedef struct _QrtrNodeServiceInfo QrtrNodeServiceInfo;
 
@@ -171,7 +171,7 @@ GType qrtr_node_service_info_get_type (void);
  *
  * Returns: the service number.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_node_service_info_get_service (QrtrNodeServiceInfo *info);
 
@@ -183,7 +183,7 @@ guint32 qrtr_node_service_info_get_service (QrtrNodeServiceInfo *info);
  *
  * Returns: the port number.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_node_service_info_get_port (QrtrNodeServiceInfo *info);
 
@@ -195,7 +195,7 @@ guint32 qrtr_node_service_info_get_port (QrtrNodeServiceInfo *info);
  *
  * Returns: the version number.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_node_service_info_get_version (QrtrNodeServiceInfo *info);
 
@@ -207,7 +207,7 @@ guint32 qrtr_node_service_info_get_version (QrtrNodeServiceInfo *info);
  *
  * Returns: the instance number.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 guint32 qrtr_node_service_info_get_instance (QrtrNodeServiceInfo *info);
 
@@ -217,7 +217,7 @@ guint32 qrtr_node_service_info_get_instance (QrtrNodeServiceInfo *info);
  *
  * Frees a single #QrtrNodeServiceInfo, as returned by qrtr_node_get_service_info_list().
  *
- * Since: 1.28
+ * Since: 1.0
  */
 void qrtr_node_service_info_free (QrtrNodeServiceInfo *info);
 G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNodeServiceInfo, qrtr_node_service_info_free)
@@ -231,7 +231,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNodeServiceInfo, qrtr_node_service_info_free)
  * Returns: (element-type QrtrNodeServiceInfo)(transfer none): a #GList of #QrtrNodeServiceInfo elements. Do not
  *  free the returned object, it is owned by @self.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 GList *qrtr_node_peek_service_info_list (QrtrNode *self);
 
@@ -245,7 +245,7 @@ GList *qrtr_node_peek_service_info_list (QrtrNode *self);
  *  must be freed with g_list_free_full() using qrtr_node_service_info_free()
  *  as #GDestroyNotify.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 GList *qrtr_node_get_service_info_list (QrtrNode *self);
 
@@ -262,7 +262,7 @@ GList *qrtr_node_get_service_info_list (QrtrNode *self);
  *
  * Returns: the port number of the service in the node, or -1 if not found.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gint32 qrtr_node_lookup_port (QrtrNode *self,
                               guint32   service);
@@ -277,7 +277,7 @@ gint32 qrtr_node_lookup_port (QrtrNode *self,
  *
  * Returns: the service number, or -1 if not found.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gint32 qrtr_node_lookup_service (QrtrNode *self,
                                  guint32   port);
@@ -302,7 +302,7 @@ gint32 qrtr_node_lookup_service (QrtrNode *self,
  * qrtr_node_wait_for_services_finish() to get the result of the
  * operation.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 void qrtr_node_wait_for_services (QrtrNode            *self,
                                   GArray              *services,
@@ -322,7 +322,7 @@ void qrtr_node_wait_for_services (QrtrNode            *self,
  * Returns: %TRUE if all requested services are present on this node,
  * or %FALSE if @error is set.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gboolean qrtr_node_wait_for_services_finish (QrtrNode      *self,
                                              GAsyncResult  *result,
@@ -348,6 +348,6 @@ void qrtr_node_remove_service_info (QrtrNode *node,
                                     guint32   version,
                                     guint32   instance);
 
-#endif /* defined (LIBQMI_GLIB_COMPILATION) */
+#endif /* defined (LIBQRTR_GLIB_COMPILATION) */
 
 #endif /* _LIBQRTR_GLIB_QRTR_NODE_H_ */

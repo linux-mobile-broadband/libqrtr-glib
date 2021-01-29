@@ -38,7 +38,7 @@
  * Returns: a string with the URI, or %NULL if none given. The returned value
  *  should be freed with g_free().
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gchar *qrtr_get_uri_for_node (guint32 node_id);
 
@@ -51,7 +51,7 @@ gchar *qrtr_get_uri_for_node (guint32 node_id);
  *
  * Returns: %TRUE if @node_id is set, %FALSE otherwise.
  *
- * Since: 1.28
+ * Since: 1.0
  */
 gboolean qrtr_get_node_for_uri (const gchar *uri,
                                 guint32     *node_id);
