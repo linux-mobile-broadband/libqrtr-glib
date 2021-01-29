@@ -1,8 +1,6 @@
 
 includedir = @includedir@/libqrtr-glib
 
-if QMI_QRTR_SUPPORTED
-
 lib_LTLIBRARIES = libqrtr-glib.la
 
 libqrtr_glib_la_CPPFLAGS = \
@@ -94,5 +92,3 @@ CLEANFILES += $(nodist_gir_DATA) $(nodist_typelib_DATA)
 endif # HAVE_INTROSPECTION
 
 -include $(INTROSPECTION_MAKEFILE)
-
-endif

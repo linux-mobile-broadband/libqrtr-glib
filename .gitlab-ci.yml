@@ -1,0 +1,46 @@
+image: gcc
+
+stages:
+  - test
+
+before_script:
+  - apt update && apt -y install autoconf automake libtool autoconf-archive libglib2.0-dev
+
+test-clean-distclean:
+  stage: test
+  script:
+    - NOCONFIGURE=1 ./autogen.sh
+    - ./configure --prefix=/usr
+    - make
+    - make clean
+    - make
+    - make distclean
+    - ./configure --prefix=/usr
+    - make
+
+test-vpath:
+  stage: test
+  script:
+    - NOCONFIGURE=1 ./autogen.sh
+    - mkdir build
+    - cd build
+    - ../configure --prefix=/usr
+    - make
+
+test-default:
+  stage: test
+  script:
+    - apt -y install gtk-doc-tools libglib2.0-doc gobject-introspection libgirepository1.0-dev
+    - NOCONFIGURE=1 ./autogen.sh
+    - ./configure --prefix=/usr --enable-gtk-doc --enable-introspection
+    - make
+    - make check
+    - make install
+    - make distcheck
+    - sha256sum $CI_PROJECT_NAME-*.tar.xz | awk '{print $1;}' > pkg_hash.txt
+  artifacts:
+    name: "$CI_PROJECT_NAME-$CI_COMMIT_TAG"
+    paths:
+      - /builds/$CI_PROJECT_ROOT_NAMESPACE/$CI_PROJECT_NAME/$CI_PROJECT_NAME-*.tar.xz
+      - /builds/$CI_PROJECT_ROOT_NAMESPACE/$CI_PROJECT_NAME/pkg_hash.txt
+    expire_in: 2 days

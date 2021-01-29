@@ -1,6 +1,4 @@
 
-if QMI_QRTR_SUPPORTED
-
 # The name of the module.
 DOC_MODULE = libqrtr-glib
 
@@ -74,5 +72,3 @@ CLEANFILES += \
 	*.stamp \
 	-rf xml html tmpl \
 	$(NULL)
-
-endif
