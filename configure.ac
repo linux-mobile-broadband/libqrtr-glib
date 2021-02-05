@@ -1,7 +1,7 @@
 dnl Process this file with autoconf to produce a configure script.
 AC_PREREQ([2.68])
 
-dnl The QRTR version number
+dnl The libqrtr-glib version number
 m4_define([qrtr_major_version], [0])
 m4_define([qrtr_minor_version], [0])
 m4_define([qrtr_micro_version], [1])
@@ -20,7 +20,7 @@ m4_define([qrtr_glib_lt_current],  [0])
 m4_define([qrtr_glib_lt_revision], [0])
 m4_define([qrtr_glib_lt_age],      [0])
 
-AC_INIT([libqrtr], [qrtr_version], [libqmi-devel@lists.freedesktop.org])
+AC_INIT([libqrtr-glib], [qrtr_version], [libqmi-devel@lists.freedesktop.org])
 AC_CONFIG_SRCDIR([config.h.in])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_MACRO_DIR([m4])
