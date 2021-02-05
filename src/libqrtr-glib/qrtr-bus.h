@@ -111,7 +111,7 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrBus, g_object_unref)
  *
  * When @lookup_timeout_ms is 0, this method does not guarantee that the
  * initial bus lookup has already finished, the user should wait for the required
- * #QrtrBus::node-added or #QrtrBus::service-added signals before assuming the
+ * #QrtrBus::node-added and #QrtrNode::service-added signals before assuming the
  * nodes are accessible.
  *
  * When the operation is finished, @callback will be invoked. You can then call
