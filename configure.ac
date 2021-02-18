@@ -3,7 +3,7 @@ AC_PREREQ([2.68])
 
 dnl The libqrtr-glib version number
 m4_define([qrtr_major_version], [1])
-m4_define([qrtr_minor_version], [0])
+m4_define([qrtr_minor_version], [1])
 m4_define([qrtr_micro_version], [0])
 m4_define([qrtr_version],
           [qrtr_major_version.qrtr_minor_version.qrtr_micro_version])
