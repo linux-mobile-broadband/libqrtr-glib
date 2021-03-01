@@ -30,6 +30,8 @@
 
 #include <glib-object.h>
 
+#include "qrtr-types.h"
+
 G_BEGIN_DECLS
 
 /**
@@ -48,7 +50,6 @@ G_BEGIN_DECLS
 #define QRTR_IS_NODE_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  QRTR_TYPE_NODE))
 #define QRTR_NODE_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  QRTR_TYPE_NODE, QrtrNodeClass))
 
-typedef struct _QrtrNode QrtrNode;
 typedef struct _QrtrNodeClass QrtrNodeClass;
 typedef struct _QrtrNodePrivate QrtrNodePrivate;
 
@@ -120,10 +121,6 @@ G_DEFINE_AUTOPTR_CLEANUP_FUNC (QrtrNode, g_object_unref)
  * Since: 1.0
  */
 guint32 qrtr_node_get_id (QrtrNode *self);
-
-/* forward references for the QrtrBus */
-typedef struct _QrtrBus QrtrBus;
-struct _QrtrBus;
 
 /**
  * qrtr_node_peek_bus:

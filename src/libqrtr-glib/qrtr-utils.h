@@ -27,7 +27,7 @@
 #include <gio/gio.h>
 #include <glib.h>
 
-#include "qrtr-node.h"
+#include "qrtr-types.h"
 
 /**
  * qrtr_get_uri_for_node:
