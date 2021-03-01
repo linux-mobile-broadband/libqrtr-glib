@@ -31,7 +31,7 @@
 #include <glib-object.h>
 #include <gio/gio.h>
 
-#include "qrtr-node.h"
+#include "qrtr-types.h"
 
 G_BEGIN_DECLS
 
@@ -53,7 +53,6 @@ G_BEGIN_DECLS
 #define QRTR_IS_BUS_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  QRTR_TYPE_BUS))
 #define QRTR_BUS_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  QRTR_TYPE_BUS, QrtrBusClass))
 
-typedef struct _QrtrBus        QrtrBus;
 typedef struct _QrtrBusClass   QrtrBusClass;
 typedef struct _QrtrBusPrivate QrtrBusPrivate;
 

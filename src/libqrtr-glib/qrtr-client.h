@@ -29,7 +29,7 @@
 
 #include <glib-object.h>
 
-#include "qrtr-node.h"
+#include "qrtr-types.h"
 
 G_BEGIN_DECLS
 
@@ -49,7 +49,6 @@ G_BEGIN_DECLS
 #define QRTR_IS_CLIENT_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass),  QRTR_TYPE_CLIENT))
 #define QRTR_CLIENT_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj),  QRTR_TYPE_CLIENT, QrtrClientClass))
 
-typedef struct _QrtrClient QrtrClient;
 typedef struct _QrtrClientClass QrtrClientClass;
 typedef struct _QrtrClientPrivate QrtrClientPrivate;
 
