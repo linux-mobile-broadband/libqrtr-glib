@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: LGPL-2.1+
 # Copyright (C) 2021 Iñigo Martinez <inigomartinez@gmail.com>
+# Copyright (C) 2021 Aleksander Morgado <aleksander@aleksander.es>
 
 project(
   'libqrtr-glib', 'c',
@@ -8,6 +9,7 @@ project(
   default_options: [
     'buildtype=debugoptimized',
     'c_std=gnu89',
+    'warning_level=2',
   ],
   meson_version: '>= 0.53.0',
 )
@@ -46,9 +48,18 @@ top_inc = include_directories('.')
 
 cc = meson.get_compiler('c')
 
-# compiler flags
-cc_flags = []
+# compiler flags that are always enabled, even in release builds
+cc_flags = cc.get_supported_arguments([
+  # warning on unused parameters is overkill, never do that
+  '-Wno-unused-parameter',
+  # function type cast disabled: used throughout the code especially to
+  # cast GAsyncReadyCallbacks with the real object type instead of GObject
+  '-Wno-cast-function-type',
+  # all message protocol structs are packed, never complain about it
+  '-Wno-packed',
+])
 
+# strict flags to use in debug builds
 if get_option('buildtype').contains('debug')
   cc_flags += cc.get_supported_arguments([
     '-fno-strict-aliasing',
@@ -60,6 +71,8 @@ if get_option('buildtype').contains('debug')
     '-Wduplicated-cond',
     '-Wfloat-equal',
     '-Wformat=2',
+    '-Wformat-nonliteral',
+    '-Wformat-security',
     '-Winit-self',
     '-Winline',
     '-Wjump-misses-init',
@@ -70,24 +83,18 @@ if get_option('buildtype').contains('debug')
     '-Wmissing-include-dirs',
     '-Wmissing-noreturn',
     '-Wmissing-prototypes',
-    '-Wno-cast-function-type',
-    '-Wno-deprecated-declarations',
-    '-Wno-error=cast-function-type',
-    '-Wno-error=missing-field-initializers',
-    '-Wno-error=packed',
-    '-Wno-error=unused-parameter',
-    '-Wno-missing-field-initializers',
-    '-Wno-sign-compare',
-    '-Wno-suggest-attribute=format',
-    '-Wno-unused-function',
-    '-Wno-unused-parameter',
     '-Wnull-dereference',
-    '-Wold-style-definition',
+    '-Wpointer-arith',
     '-Wredundant-decls',
+    '-Wrestrict',
+    '-Wreturn-type',
     '-Wshadow',
     '-Wstrict-prototypes',
+    '-Wsuggest-attribute=format',
+    '-Wswitch-default',
     '-Wswitch-enum',
     '-Wundef',
+    '-Wunused-but-set-variable',
     '-Wwrite-strings',
   ])
 endif
