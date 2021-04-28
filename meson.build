@@ -5,7 +5,10 @@ project(
   'libqrtr-glib', 'c',
   version: '1.1.0',
   license: 'LGPL2+',
-  default_options: 'buildtype=debugoptimized',
+  default_options: [
+    'buildtype=debugoptimized',
+    'c_std=gnu89',
+  ],
   meson_version: '>= 0.53.0',
 )
 
@@ -45,10 +48,6 @@ cc = meson.get_compiler('c')
 
 # compiler flags
 cc_flags = []
-
-if cc.get_id() == 'gcc'
-  cc_flags += ['-std=gnu89']
-endif
 
 if get_option('buildtype').contains('debug')
   cc_flags += cc.get_supported_arguments([
