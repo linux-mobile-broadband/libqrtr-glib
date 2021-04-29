@@ -11,7 +11,7 @@ project(
     'c_std=gnu89',
     'warning_level=2',
   ],
-  meson_version: '>= 0.53.0',
+  meson_version: '>= 0.45.1',
 )
 
 qrtr_version = meson.project_version()
@@ -25,7 +25,7 @@ qrtr_includedir = get_option('includedir')
 qrtr_libexecdir = get_option('libexecdir')
 
 qrtr_glib_include_subdir = meson.project_name()
-qrtr_glib_pkgincludedir = qrtr_includedir / qrtr_glib_include_subdir
+qrtr_glib_pkgincludedir = join_paths(qrtr_includedir, qrtr_glib_include_subdir)
 
 # libtool versioning for libqrtr-glib (-version-info c:r:a)
 # - If the interface is unchanged, but the implementation has changed or been fixed, then increment r
@@ -125,8 +125,17 @@ glib_deps = declare_dependency(
 
 assert(cc.has_header('linux/qrtr.h'), 'QRTR support not available in the kernel headers')
 
+version_conf = configuration_data()
+version_conf.set('QRTR_MAJOR_VERSION', qrtr_major_version)
+version_conf.set('QRTR_MINOR_VERSION', qrtr_minor_version)
+version_conf.set('QRTR_MICRO_VERSION', qrtr_micro_version)
+version_conf.set('VERSION', qrtr_version)
+
 # introspection support
-enable_gir = dependency('gobject-introspection-1.0', version: '>= 0.9.6', required: get_option('introspection')).found()
+enable_gir = get_option('introspection')
+if enable_gir
+  dependency('gobject-introspection-1.0', version: '>= 0.9.6')
+endif
 
 subdir('src/libqrtr-glib')
 
@@ -135,13 +144,12 @@ if enable_gtk_doc
   subdir('docs/reference/libqrtr-glib')
 endif
 
-summary({
-  'compiler': cc.get_id(),
-  'cflags': ' '.join(cc_flags),
-  'Documentation': enable_gtk_doc,
-  'gobject introspection': enable_gir,
-}, section: 'Build')
-
-summary({
-  'prefix': qrtr_prefix,
-}, section: 'System paths')
+output = '\n' + meson.project_name() + ' ' + meson.project_version() + '\n\n'
+output += '  Build\n'
+output += '    compiler:              ' + cc.get_id() + '\n'
+output += '    cflags:                ' + ' '.join(cc_flags) + '\n'
+output += '    Documentation:         ' + enable_gtk_doc.to_string() + '\n'
+output += '    gobject introspection: ' + enable_gir.to_string() + '\n\n'
+output += '  System paths\n'
+output += '    prefix:                ' + qrtr_prefix
+message(output)

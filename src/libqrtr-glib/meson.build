@@ -1,6 +1,8 @@
 # SPDX-License-Identifier: LGPL-2.1+
 # Copyright (C) 2021 Iñigo Martinez <inigomartinez@gmail.com>
 
+libname = 'qrtr-glib'
+
 libqrtr_glib_inc = include_directories('.')
 
 headers = files(
@@ -17,17 +19,10 @@ install_headers(
   subdir: qrtr_glib_include_subdir,
 )
 
-version_conf = {
-  'QRTR_MAJOR_VERSION': qrtr_major_version,
-  'QRTR_MINOR_VERSION': qrtr_minor_version,
-  'QRTR_MICRO_VERSION': qrtr_micro_version,
-}
-
 version_header = configure_file(
   input: 'qrtr-version.h.in',
   output: '@BASENAME@',
   configuration: version_conf,
-  install: true,
   install_dir: qrtr_glib_pkgincludedir,
 )
 
@@ -41,11 +36,11 @@ sources = files(
 c_flags = [
   '-DLIBQRTR_GLIB_COMPILATION',
   '-DG_LOG_DOMAIN="Qrtr"',
-  '-DLIBEXEC_PATH="@0@"'.format(qrtr_prefix / qrtr_libexecdir),
+  '-DLIBEXEC_PATH="@0@"'.format(join_paths(qrtr_prefix, qrtr_libexecdir)),
 ]
 
 libqrtr_glib = shared_library(
-  'qrtr-glib',
+  libname,
   version: qrtr_glib_version,
   sources: sources + [version_header],
   include_directories: top_inc,
@@ -62,7 +57,9 @@ libqrtr_glib_dep = declare_dependency(
 )
 
 pkg.generate(
-  libqrtr_glib,
+  libraries: libqrtr_glib,
+  version: qrtr_version,
+  name: libname,
   description: 'Library to use and monitor the QRTR bus',
   subdirs: qrtr_glib_include_subdir,
   # FIXME: produced by the inhability of meson to use internal dependencies

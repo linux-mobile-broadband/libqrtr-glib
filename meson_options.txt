@@ -1,2 +1,2 @@
-option('introspection', type: 'feature', value: 'auto', description: 'build introspection support')
+option('introspection', type: 'boolean', value: true, description: 'build introspection support')
 option('gtk_doc', type: 'boolean', value: true, description: 'use gtk-doc to build documentation')
