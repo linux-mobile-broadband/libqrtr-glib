@@ -1,1 +1,0 @@
-SUBDIRS = pkg-config
