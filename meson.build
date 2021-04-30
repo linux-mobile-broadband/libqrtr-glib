@@ -101,7 +101,7 @@ endif
 
 add_project_arguments(cc_flags, language: 'c')
 
-glib_version = '2.48'
+glib_version = '2.56'
 
 glib_dep = dependency('glib-2.0', version: '>= ' + glib_version)
 gio_unix_dep = dependency('gio-unix-2.0')
