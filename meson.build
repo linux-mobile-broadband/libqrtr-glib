@@ -1,11 +1,11 @@
-# SPDX-License-Identifier: LGPL-2.1+
+# SPDX-License-Identifier: LGPL-2.1-or-later
 # Copyright (C) 2021 Iñigo Martinez <inigomartinez@gmail.com>
 # Copyright (C) 2021 Aleksander Morgado <aleksander@aleksander.es>
 
 project(
   'libqrtr-glib', 'c',
   version: '1.1.0',
-  license: 'LGPL2+',
+  license: 'LGPL-2.1-or-later',
   default_options: [
     'buildtype=debugoptimized',
     'c_std=gnu89',
