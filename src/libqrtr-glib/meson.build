@@ -16,7 +16,7 @@ headers = files(
 
 install_headers(
   headers,
-  subdir: qrtr_glib_include_subdir,
+  install_dir: qrtr_glib_pkgincludedir,
 )
 
 version_header = configure_file(
