@@ -11,7 +11,7 @@ project(
     'c_std=gnu89',
     'warning_level=2',
   ],
-  meson_version: '>= 0.45.1',
+  meson_version: '>= 0.53.0',
 )
 
 qrtr_version = meson.project_version()
@@ -144,12 +144,13 @@ if enable_gtk_doc
   subdir('docs/reference/libqrtr-glib')
 endif
 
-output = '\n' + meson.project_name() + ' ' + meson.project_version() + '\n\n'
-output += '  Build\n'
-output += '    compiler:              ' + cc.get_id() + '\n'
-output += '    cflags:                ' + ' '.join(cc_flags) + '\n'
-output += '    Documentation:         ' + enable_gtk_doc.to_string() + '\n'
-output += '    gobject introspection: ' + enable_gir.to_string() + '\n\n'
-output += '  System paths\n'
-output += '    prefix:                ' + qrtr_prefix
-message(output)
+summary({
+  'compiler': cc.get_id(),
+  'cflags': cc_flags,
+  'Documentation': enable_gtk_doc,
+  'gobject introspection': enable_gir,
+}, section: 'Build')
+
+summary({
+  'prefix': qrtr_prefix,
+}, section: 'System paths')
