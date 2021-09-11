@@ -125,11 +125,12 @@ glib_deps = declare_dependency(
 
 assert(cc.has_header('linux/qrtr.h'), 'QRTR support not available in the kernel headers')
 
-version_conf = configuration_data()
-version_conf.set('QRTR_MAJOR_VERSION', qrtr_major_version)
-version_conf.set('QRTR_MINOR_VERSION', qrtr_minor_version)
-version_conf.set('QRTR_MICRO_VERSION', qrtr_micro_version)
-version_conf.set('VERSION', qrtr_version)
+version_conf = {
+  'QRTR_MAJOR_VERSION': qrtr_major_version,
+  'QRTR_MINOR_VERSION': qrtr_minor_version,
+  'QRTR_MICRO_VERSION': qrtr_micro_version,
+  'VERSION': qrtr_version,
+}
 
 # introspection support
 enable_gir = get_option('introspection')
