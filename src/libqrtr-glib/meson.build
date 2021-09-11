@@ -36,7 +36,7 @@ sources = files(
 c_flags = [
   '-DLIBQRTR_GLIB_COMPILATION',
   '-DG_LOG_DOMAIN="Qrtr"',
-  '-DLIBEXEC_PATH="@0@"'.format(join_paths(qrtr_prefix, qrtr_libexecdir)),
+  '-DLIBEXEC_PATH="@0@"'.format(qrtr_prefix / qrtr_libexecdir),
 ]
 
 libqrtr_glib = shared_library(

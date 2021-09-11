@@ -25,7 +25,7 @@ qrtr_includedir = get_option('includedir')
 qrtr_libexecdir = get_option('libexecdir')
 
 qrtr_glib_include_subdir = meson.project_name()
-qrtr_glib_pkgincludedir = join_paths(qrtr_includedir, qrtr_glib_include_subdir)
+qrtr_glib_pkgincludedir = qrtr_includedir / qrtr_glib_include_subdir
 
 # libtool versioning for libqrtr-glib (-version-info c:r:a)
 # - If the interface is unchanged, but the implementation has changed or been fixed, then increment r
