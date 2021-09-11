@@ -41,9 +41,9 @@ build-meson-default:
     - tags
     - schedules
   script:
-    - meson setup _debug_build --prefix=/usr -Dwerror=true -Dgtk_doc=false -Dintrospection=true
+    - meson setup _debug_build --prefix=/usr -Dwerror=true -Dgtk_doc=false -Dintrospection=enabled
     - ninja -C _debug_build
     - ninja -C _debug_build install
-    - meson setup _release_build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=false -Dintrospection=true
+    - meson setup _release_build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=false -Dintrospection=enabled
     - ninja -C _release_build
     - ninja -C _release_build install
