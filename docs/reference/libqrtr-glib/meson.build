@@ -32,5 +32,6 @@ gnome.gtkdoc(
   namespace: 'qrtr',
   scan_args: scan_args,
   fixxref_args: fixxref_args,
+  content_files: version_xml,
   install: true,
 )
