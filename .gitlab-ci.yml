@@ -24,7 +24,7 @@ build container:
   - .common_variables
   stage: container prep
   only:
-    - master
+    - main
     - branches
     - merge_requests
     - tags
@@ -36,7 +36,7 @@ build-meson-default:
   - .fdo.distribution-image@ubuntu
   - .common_variables
   only:
-    - master
+    - main
     - merge_requests
     - tags
     - schedules
