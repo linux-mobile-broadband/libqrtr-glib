@@ -1,35 +1,40 @@
 
-The libqrtr releases are generated using the GNU autotools.
+The libqrtr releases are generated using meson.
 
-1) Configure and build the whole project, making sure gtk-doc is enabled:
+0.1) For major releases:
+    * Increment qrtr_minor_version and reset qrtr_micro_version.
+    * Assuming API/ABI compatibility, increment both qrtr_glib_lt_current and
+      qrtr_glib_lt_age.
 
-    $ NOCONFIGURE=1 ./autogen.sh
-    $ ./configure --enable-gtk-doc
-    $ make -j8
+0.2) For stable branch releases:
+    * Increment qrtr_micro_version.
 
-2) Run distcheck so that the source distribution tarball is generated, and the
-   project test suite is run on it:
+1) Add signed tag:
+    $ git tag -s 1.2.0
 
-    $ make distcheck
+2) Configure and build the whole project, making sure gtk-doc and introspection
+   are enabled:
+    $ meson setup build \
+        --prefix=/usr \
+        --buildtype=release \
+        -Dintrospection=true \
+        -Dgtk_doc=true
+    $ ninja -C build
 
-3) Compute checksum of the tarball so that it can be referenced in the release
-   email:
+3) Run the test suite:
+    $ ninja -C build test
 
-    $ sha256sum libqrtr-${VERSION}.tar.xz
-
-4) Sign release tarball, and verify it (*):
-
-    $ gpg --detach-sign --armor libqrtr-${VERSION}.tar.xz
-    $ gpg --verify libqrtr-${VERSION}.tar.xz.asc libqrtr-${VERSION}.tar.xz
-
-5) Upload source tarball (.tar.xz) and signature (.tar.xz.asc) to
-   freedesktop.org
-
-TODO: manpages and gtk-doc references
+4) Create directories for the gtk-doc documentation in freedesktop.org, and also
+   update the 'latest' links:
+    $ ssh fd.o
+    [fd.o] $ cd ${libqmi}/libqrtr-glib/
+    [fd.o] $ rm latest
+    [fd.o] $ mkdir -p ${VERSION}
+    [fd.o] $ ln -s ${VERSION} latest
 
 -------------------------------------------------------------------------------
 
-*) Verifying the release signature requires the public key of the person who
-   signed it, e.g.:
+*) Verifying the signed tag requires the public key of the person who signed it,
+   e.g.:
 
     $ curl https://www.freedesktop.org/software/libqrtr/0x3CAD53398973FFFA.asc | gpg --import
