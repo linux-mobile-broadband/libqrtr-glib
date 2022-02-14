@@ -86,7 +86,7 @@ if enable_gir
     symbol_prefix: ns.to_lower() + '_',
     extra_args: c_flags + ['--identifier-prefix=' + ns.to_upper()],
     header: 'libqrtr-glib.h',
-    export_packages: 'libqrtr-glib',
+    export_packages: libname,
     install: true,
   )
 endif
