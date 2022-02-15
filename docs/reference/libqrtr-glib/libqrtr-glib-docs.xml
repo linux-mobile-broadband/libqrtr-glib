@@ -57,6 +57,10 @@
     <title>Index</title>
     <xi:include href="xml/api-index-full.xml"></xi:include>
   </chapter>
+  <chapter id="api-index-deprecated" role="deprecated">
+    <title>Index of deprecated symbols</title>
+    <xi:include href="xml/api-index-deprecated.xml"></xi:include>
+  </chapter>
   <chapter id="api-index-1-0" role="1.0">
     <title>Index of new symbols in 1.0</title>
     <xi:include href="xml/api-index-1.0.xml"></xi:include>
