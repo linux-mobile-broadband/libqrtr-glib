@@ -57,12 +57,22 @@ typedef struct _QrtrNodePrivate QrtrNodePrivate;
  */
 #define QRTR_NODE_ID "node-id"
 
+/**
+ * QrtrNode:
+ *
+ * The #QrtrNode structure contains private data and should only be accessed
+ * using the provided API.
+ *
+ * Since: 1.0
+ */
 struct _QrtrNode {
+    /*< private >*/
     GObject parent;
     QrtrNodePrivate *priv;
 };
 
 struct _QrtrNodeClass {
+    /*< private >*/
     GObjectClass parent;
 };
 
