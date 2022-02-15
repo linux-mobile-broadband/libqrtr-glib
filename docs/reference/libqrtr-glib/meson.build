@@ -13,6 +13,7 @@ glib_prefix = glib_dep.get_pkgconfig_variable('prefix')
 fixxref_args = [
   '--html-dir=' + (qrtr_prefix / gnome.gtkdoc_html_dir(doc_module)),
   '--extra-dir=' + (glib_prefix / gnome.gtkdoc_html_dir('gio')),
+  '--extra-dir=' + (glib_prefix / gnome.gtkdoc_html_dir('gobject')),
   '--extra-dir=' + (glib_prefix / gnome.gtkdoc_html_dir('glib')),
 ]
 
