@@ -24,8 +24,9 @@ The libqrtr releases are generated using meson.
         -Dgtk_doc=true
     $ ninja -C build
 
-3) Run the test suite:
+3) Run the test suite and install locally:
     $ ninja -C build test
+    $ sudo ninja -C build install
 
 4) Create directories for the gtk-doc documentation in freedesktop.org, and also
    update the 'latest' links:
@@ -34,6 +35,19 @@ The libqrtr releases are generated using meson.
     [fd.o] $ rm latest
     [fd.o] $ mkdir -p ${VERSION}
     [fd.o] $ ln -s ${VERSION} latest
+
+5) Copy documentation from /usr/share/gtk-doc and fix online references manually
+    $ mkdir html
+    $ cp -r /usr/share/gtk-doc/html/libqrtr-glib/* html/
+    $ for FILE in $(ls html/*.html); do \
+        sed -i 's|<a[^>]* href="\.\./glib/[^"]*|<a href="https://docs.gtk.org/glib/|g' $FILE; \
+        sed -i 's|<a[^>]* href="\.\./gobject/[^"]*|<a href="https://docs.gtk.org/gobject/|g' $FILE; \
+        sed -i 's|<a[^>]* href="\.\./gio/[^"]*|<a href="https://docs.gtk.org/gio/|g' $FILE; \
+      done
+
+6) Upload the modified HTML files to freedesktop.org:
+    $ scp html/* fd.o:${libqmi}/libqrtr-glib/${VERSION}/
+
 
 -------------------------------------------------------------------------------
 
