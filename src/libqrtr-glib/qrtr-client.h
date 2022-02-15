@@ -65,12 +65,22 @@ typedef struct _QrtrClientPrivate QrtrClientPrivate;
  */
 #define QRTR_CLIENT_SIGNAL_MESSAGE "client-message"
 
+/**
+ * QrtrClient:
+ *
+ * The #QrtrClient structure contains private data and should only be accessed
+ * using the provided API.
+ *
+ * Since: 1.0
+ */
 struct _QrtrClient {
+    /*< private >*/
     GObject parent;
     QrtrClientPrivate *priv;
 };
 
 struct _QrtrClientClass {
+    /*< private >*/
     GObjectClass parent;
 };
 
