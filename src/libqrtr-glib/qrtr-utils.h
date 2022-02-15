@@ -16,6 +16,14 @@
 #include "qrtr-types.h"
 
 /**
+ * SECTION:qrtr-utils
+ * @title: QRTR utilities
+ * @short_description: Utilities in the library.
+ *
+ * Common utilities in the libqrtr-glib library.
+ */
+
+/**
  * qrtr_get_uri_for_node:
  * @node_id: node id.
  *
