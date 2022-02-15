@@ -48,6 +48,13 @@ The libqrtr releases are generated using meson.
 6) Upload the modified HTML files to freedesktop.org:
     $ scp html/* fd.o:${libqmi}/libqrtr-glib/${VERSION}/
 
+7.1) For major releases:
+     * Fork new stable branch (e.g. qrtr-${MAJOR}-${MINOR})
+     * Post-release version bump in the master branch, increment qrtr_minor_version.
+     * Post-release version bump in the stable branch, increment qrtr_micro_version.
+
+7.2) For stable branch releases:
+     * Post-release version bump, increment qrtr_micro_version.
 
 -------------------------------------------------------------------------------
 
