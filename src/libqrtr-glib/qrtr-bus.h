@@ -42,7 +42,16 @@ G_BEGIN_DECLS
 typedef struct _QrtrBusClass   QrtrBusClass;
 typedef struct _QrtrBusPrivate QrtrBusPrivate;
 
+/**
+ * QrtrBus:
+ *
+ * The #QrtrBus structure contains private data and should only be accessed
+ * using the provided API.
+ *
+ * Since: 1.0
+ */
 struct _QrtrBus {
+    /*< private >*/
     GObject parent;
     QrtrBusPrivate *priv;
 };
