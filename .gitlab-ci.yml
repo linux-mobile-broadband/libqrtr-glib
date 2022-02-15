@@ -30,6 +30,21 @@ build container:
     - tags
     - pushes
 
+build-no-introspection:
+  stage: build
+  extends:
+  - .fdo.distribution-image@ubuntu
+  - .common_variables
+  only:
+    - main
+    - merge_requests
+    - tags
+    - schedules
+  script:
+    - meson setup build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=false -Dintrospection=false
+    - ninja -C build
+    - ninja -C build install
+
 build-release:
   stage: build
   extends:
