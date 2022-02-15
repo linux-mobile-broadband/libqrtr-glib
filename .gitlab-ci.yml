@@ -30,7 +30,7 @@ build container:
     - tags
     - pushes
 
-build-meson-default:
+build-release:
   stage: build
   extends:
   - .fdo.distribution-image@ubuntu
@@ -41,9 +41,8 @@ build-meson-default:
     - tags
     - schedules
   script:
-    - meson setup _debug_build --prefix=/usr -Dwerror=true -Dgtk_doc=false
-    - ninja -C _debug_build
-    - ninja -C _debug_build install
-    - meson setup _release_build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=false
-    - ninja -C _release_build
-    - ninja -C _release_build install
+    - meson setup build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=true
+    - ninja -C build
+    - ninja -C build install
+    - ninja -C build dist
+    - ninja -C build uninstall
