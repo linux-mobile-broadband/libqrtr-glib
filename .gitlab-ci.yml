@@ -40,9 +40,26 @@ build-no-introspection:
     - tags
     - schedules
   script:
-    - meson setup build --prefix=/usr --buildtype=release -Dwerror=true -Dgtk_doc=false -Dintrospection=false
+    - meson setup build --prefix=/usr -Dwerror=true -Dgtk_doc=false -Dintrospection=false
     - ninja -C build
     - ninja -C build install
+
+build-debug:
+  stage: build
+  extends:
+  - .fdo.distribution-image@ubuntu
+  - .common_variables
+  only:
+    - main
+    - merge_requests
+    - tags
+    - schedules
+  script:
+    - meson setup build --prefix=/usr --buildtype=debug -Dwerror=true -Dgtk_doc=true
+    - ninja -C build
+    - ninja -C build install
+    - ninja -C build dist
+    - ninja -C build uninstall
 
 build-release:
   stage: build
