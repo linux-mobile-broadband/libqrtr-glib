@@ -39,7 +39,7 @@ c_flags = [
   '-DLIBEXEC_PATH="@0@"'.format(qrtr_prefix / qrtr_libexecdir),
 ]
 
-libqrtr_glib = shared_library(
+libqrtr_glib = library(
   libname,
   version: qrtr_glib_version,
   sources: sources + [version_header],
