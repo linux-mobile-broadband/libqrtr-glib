@@ -39,7 +39,7 @@ gchar *qrtr_get_uri_for_node (guint32 node_id);
 /**
  * qrtr_get_node_for_uri:
  * @uri: a URI.
- * @node_id: return location for the node id.
+ * @node_id: (out): return location for the node id.
  *
  * Get the QRTR node id from the specified URI.
  *
