@@ -4,7 +4,7 @@
 
 project(
   'libqrtr-glib', 'c',
-  version: '1.3.0',
+  version: '1.3.995',
   license: 'LGPL-2.1-or-later',
   default_options: [
     'buildtype=debugoptimized',
