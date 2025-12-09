@@ -21,6 +21,7 @@ qrtr_minor_version = version_array[1].to_int()
 qrtr_micro_version = version_array[2].to_int()
 
 qrtr_prefix = get_option('prefix')
+qrtr_datadir = get_option('datadir')
 qrtr_includedir = get_option('includedir')
 qrtr_libexecdir = get_option('libexecdir')
 
