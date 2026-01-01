@@ -39,24 +39,15 @@ The libqrtr releases are generated using meson.
     [fd.o] $ mkdir -p ${VERSION}
     [fd.o] $ ln -s ${VERSION} latest
 
-8) Copy documentation from /usr/share/gtk-doc and fix online references manually
-    $ mkdir html
-    $ cp -r /usr/share/gtk-doc/html/libqrtr-glib/* html/
-    $ for FILE in $(ls html/*.html); do \
-        sed -i 's|<a[^>]* href="\.\./glib/[^"]*|<a href="https://docs.gtk.org/glib/|g' $FILE; \
-        sed -i 's|<a[^>]* href="\.\./gobject/[^"]*|<a href="https://docs.gtk.org/gobject/|g' $FILE; \
-        sed -i 's|<a[^>]* href="\.\./gio/[^"]*|<a href="https://docs.gtk.org/gio/|g' $FILE; \
-      done
+8) Upload the HTML files to freedesktop.org:
+    $ scp build/docs/reference/libqrtr-glib/libqrtr-glib-1.0/* fd.o:${libqmi}/libqrtr-glib/${VERSION}/
 
-9) Upload the modified HTML files to freedesktop.org:
-    $ scp html/* fd.o:${libqmi}/libqrtr-glib/${VERSION}/
-
-10) For major releases:
+9) For major releases:
      * Fork new stable branch (e.g. qrtr-${MAJOR}-${MINOR})
      * Post-release version bump in the master branch, increment qrtr_minor_version.
      * Post-release version bump in the stable branch, increment qrtr_micro_version.
 
-11) For stable branch releases:
+10) For stable branch releases:
      * Post-release version bump, increment qrtr_micro_version.
 
 -------------------------------------------------------------------------------
