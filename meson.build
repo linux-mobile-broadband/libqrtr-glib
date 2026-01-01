@@ -4,7 +4,7 @@
 
 project(
   'libqrtr-glib', 'c',
-  version: '1.3.995',
+  version: '1.4.0',
   license: 'LGPL-2.1-or-later',
   default_options: [
     'buildtype=debugoptimized',
@@ -34,7 +34,7 @@ qrtr_glib_pkgincludedir = qrtr_includedir / qrtr_glib_include_subdir
 #   - If the interface has grown (that is, the new library is compatible with old code), increment a.
 #   - If the interface has changed in an incompatible way (that is, functions have changed or been removed), then zero a.
 current = 0
-revision = 0
+revision = 1
 age = 0
 qrtr_glib_version = '@0@.@1@.@2@'.format(current - age, age, revision)
 

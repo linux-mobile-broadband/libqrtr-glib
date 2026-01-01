@@ -2,16 +2,14 @@
 The libqrtr releases are generated using meson.
 
 1) For major releases:
-    * Increment qrtr_minor_version and reset qrtr_micro_version.
+    * Increment minor meson 'version' component (eg 1.x.y -> 1.x+1.0).
     * Assuming API/ABI compatibility, increment both qrtr_glib_lt_current and
       qrtr_glib_lt_age.
 
 2) For stable branch releases:
-    * Increment qrtr_micro_version.
+    * Increment micro meson 'version' component (eg 1.x.y -> 1.x.y+1).
 
-3) Bump 'version' in meson.build (eg, to "1.28.0")
-
-4) Configure and build the whole project, making sure gtk-doc and introspection
+3) Configure and build the whole project, making sure gtk-doc and introspection
    are enabled:
     $ meson setup build \
         --prefix=/usr \
@@ -20,19 +18,20 @@ The libqrtr releases are generated using meson.
         -Dgtk_doc=true
     $ ninja -C build
 
-5) Run the test suite and install locally:
+4) Run the test suite and install locally:
     $ ninja -C build test
     $ sudo ninja -C build install
 
-6) Push changes to a release MR on gitlab; once CI passes merge the PR.
+5) Push changes to a release MR on gitlab
+    * Use a commit title like "release: bump version to 1.4.0"
+    * Once CI passes merge the PR.
 
-7) Add signed tag:
+6) Add and push a signed tag:
     $ git tag -s 1.2.0
+      (use a description like "Release 1.2.0")
+    $ git push tag 1.2.0
 
-   The description included in the signed tag could be:
-    Release 1.2.0
-
-8) Create directories for the gtk-doc documentation in freedesktop.org, and also
+7) Create directories for the gtk-doc documentation in freedesktop.org, and also
    update the 'latest' links:
     $ ssh fd.o
     [fd.o] $ cd ${libqmi}/libqrtr-glib/
@@ -40,7 +39,7 @@ The libqrtr releases are generated using meson.
     [fd.o] $ mkdir -p ${VERSION}
     [fd.o] $ ln -s ${VERSION} latest
 
-9) Copy documentation from /usr/share/gtk-doc and fix online references manually
+8) Copy documentation from /usr/share/gtk-doc and fix online references manually
     $ mkdir html
     $ cp -r /usr/share/gtk-doc/html/libqrtr-glib/* html/
     $ for FILE in $(ls html/*.html); do \
@@ -49,15 +48,15 @@ The libqrtr releases are generated using meson.
         sed -i 's|<a[^>]* href="\.\./gio/[^"]*|<a href="https://docs.gtk.org/gio/|g' $FILE; \
       done
 
-10) Upload the modified HTML files to freedesktop.org:
+9) Upload the modified HTML files to freedesktop.org:
     $ scp html/* fd.o:${libqmi}/libqrtr-glib/${VERSION}/
 
-11) For major releases:
+10) For major releases:
      * Fork new stable branch (e.g. qrtr-${MAJOR}-${MINOR})
      * Post-release version bump in the master branch, increment qrtr_minor_version.
      * Post-release version bump in the stable branch, increment qrtr_micro_version.
 
-11.2) For stable branch releases:
+11) For stable branch releases:
      * Post-release version bump, increment qrtr_micro_version.
 
 -------------------------------------------------------------------------------
