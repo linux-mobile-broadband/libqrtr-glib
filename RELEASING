@@ -44,11 +44,14 @@ The libqrtr releases are generated using meson.
 
 9) For major releases:
      * Fork new stable branch (e.g. qrtr-${MAJOR}-${MINOR})
-     * Post-release version bump in the master branch, increment qrtr_minor_version.
-     * Post-release version bump in the stable branch, increment qrtr_micro_version.
+     * Post-release version bump in the master branch, increment minor meson 'version' component.
+         - Use a commit message like "build: unstable release version bump to 1.5.0"
+     * Post-release version bump in the stable branch, increment micro meson 'version' component.
+         - Use a commit message like "build: unstable release version bump to 1.4.1"
 
 10) For stable branch releases:
-     * Post-release version bump, increment qrtr_micro_version.
+     * Post-release version bump, increment micro meson 'version' component.
+         - Use a commit message like "build: unstable release version bump to 1.4.1"
 
 -------------------------------------------------------------------------------
 
